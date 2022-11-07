@@ -218,37 +218,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExampleCharacter
       objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: spriteSheet
-      value: 
-      objectReference: {fileID: 21300000, guid: 08164069841fe924fa89cf0dddcf31e3, type: 3}
-    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: timePerFrame
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763294, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763294, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: m_SpriteSortPoint
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763294, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4421662896332763295, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763295, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763295, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4421662896332763295, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
       propertyPath: m_LocalPosition.x

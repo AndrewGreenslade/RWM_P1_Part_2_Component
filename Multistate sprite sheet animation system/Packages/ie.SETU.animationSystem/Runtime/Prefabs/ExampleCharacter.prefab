@@ -103,7 +103,7 @@ MonoBehaviour:
   totalFrames: 73
   WalkingFrames:
     startFrame: 0
-    endFrame: 17
+    endFrame: 3
   timePerFrame: 0.5
   currentTimePerFrame: 0
   currentFrame: 0

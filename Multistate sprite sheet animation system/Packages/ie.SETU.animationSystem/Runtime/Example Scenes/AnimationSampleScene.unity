@@ -223,8 +223,36 @@ PrefabInstance:
       value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
+      propertyPath: WalkingFrames.frameName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
       propertyPath: WalkingFrames.startFrame
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
+      propertyPath: customFrameRanges.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
+      propertyPath: customFrameRanges.Array.data[0].frameName
+      value: Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
+      propertyPath: customFrameRanges.Array.data[1].frameName
+      value: Walking
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
+      propertyPath: customFrameRanges.Array.data[0].startAndEndFrames.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
+      propertyPath: customFrameRanges.Array.data[0].startAndEndFrames.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
+      propertyPath: customFrameRanges.Array.data[1].startAndEndFrames.y
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4421662896332763295, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
       propertyPath: m_RootOrder

@@ -5,8 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public struct myFrame
 {
-    public int startFrame;
-    public int endFrame;
+    public string frameName;
+    public Vector2Int startAndEndFrames;
 }
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -18,7 +18,13 @@ public class AnimationManager : MonoBehaviour
     public int YFrameCount;
     public int totalFrames;
     public Sprite[] Frames;
-    public myFrame WalkingFrames;
+    
+    public List<myFrame> customFrameRanges;
+    public List<string> animationStates;
+
+    public string IdleFrameName = "Idle";
+    private myFrame currentFrameObj;
+
     public float timePerFrame;
     public float currentTimePerFrame;
     public int currentFrame;
@@ -28,6 +34,8 @@ public class AnimationManager : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = spriteSheet;
+        
+        animationStates = new List<string>();
 
         List<Sprite> cut_Sprites = new List<Sprite>();
 
@@ -45,7 +53,18 @@ public class AnimationManager : MonoBehaviour
         }
 
         Frames = cut_Sprites.ToArray();
-        currentFrame = WalkingFrames.startFrame;
+
+        foreach (myFrame frame in customFrameRanges)
+        {
+            animationStates.Add(frame.frameName);
+
+            if (frame.frameName == IdleFrameName)
+            {
+                currentFrameObj = frame;
+            }
+        }
+
+        currentFrame = currentFrameObj.startAndEndFrames.x;
         spriteRenderer.sprite = Frames[currentFrame];
     }
 
@@ -59,9 +78,9 @@ public class AnimationManager : MonoBehaviour
             currentFrame++;
             currentTimePerFrame = 0;
 
-            if (currentFrame > WalkingFrames.endFrame)
+            if (currentFrame > currentFrameObj.startAndEndFrames.y)
             {
-                currentFrame = WalkingFrames.startFrame;
+                currentFrame = currentFrameObj.startAndEndFrames.x;
             }
 
             spriteRenderer.sprite = Frames[currentFrame];

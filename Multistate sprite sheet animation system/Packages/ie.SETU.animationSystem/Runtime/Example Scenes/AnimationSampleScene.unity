@@ -218,6 +218,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExampleCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
+      propertyPath: WalkingFrames.endFrame
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
+      propertyPath: WalkingFrames.startFrame
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 4421662896332763295, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
       propertyPath: m_RootOrder
       value: 1

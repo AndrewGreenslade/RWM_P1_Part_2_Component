@@ -17,7 +17,7 @@ public class AnimationManager : MonoBehaviour
     public int XFrameCount;
     public int YFrameCount;
     public int totalFrames;
-    private Sprite[] Frames;
+    public Sprite[] Frames;
     public myFrame WalkingFrames;
     public float timePerFrame;
     public float currentTimePerFrame;
@@ -38,7 +38,8 @@ public class AnimationManager : MonoBehaviour
         {
             for (int x = 0; x < XFrameCount; x++)
             {
-                Sprite spr = Sprite.Create(spriteRenderer.sprite.texture, new Rect(x * w, y * h, w, h), new Vector2(0, 0));
+                Sprite spr = Sprite.Create(spriteRenderer.sprite.texture, new Rect(x * w,h * (YFrameCount - y - 1), w, h), new Vector2(0.5f, 0.5f));
+                spr.name = "X: " + (x * w) + " Y: " + (y * h);
                 cut_Sprites.Add(spr);
             }
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public struct myFrame
@@ -8,6 +9,11 @@ public struct myFrame
     public string frameName;
     public Vector2Int startAndEndFrames;
 }
+
+public class MyStringEvent : UnityEvent<string>
+{
+}
+
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class AnimationManager : MonoBehaviour
@@ -18,12 +24,12 @@ public class AnimationManager : MonoBehaviour
     public int YFrameCount;
     public int totalFrames;
     public Sprite[] Frames;
-    
+
     public List<myFrame> customFrameRanges;
-    public List<string> animationStates;
+    public MyStringEvent ChangeAnimEvent;
 
     public string IdleFrameName = "Idle";
-    private myFrame currentFrameObj;
+    public myFrame currentFrameObj;
 
     public float timePerFrame;
     public float currentTimePerFrame;
@@ -34,8 +40,9 @@ public class AnimationManager : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = spriteSheet;
-        
-        animationStates = new List<string>();
+
+        //animationStates = new List<string>();
+        RegesterEvent();
 
         List<Sprite> cut_Sprites = new List<Sprite>();
 
@@ -46,7 +53,7 @@ public class AnimationManager : MonoBehaviour
         {
             for (int x = 0; x < XFrameCount; x++)
             {
-                Sprite spr = Sprite.Create(spriteRenderer.sprite.texture, new Rect(x * w,h * (YFrameCount - y - 1), w, h), new Vector2(0.5f, 0.5f));
+                Sprite spr = Sprite.Create(spriteRenderer.sprite.texture, new Rect(x * w, h * (YFrameCount - y - 1), w, h), new Vector2(0.5f, 0.5f));
                 spr.name = "X: " + (x * w) + " Y: " + (y * h);
                 cut_Sprites.Add(spr);
             }
@@ -56,7 +63,7 @@ public class AnimationManager : MonoBehaviour
 
         foreach (myFrame frame in customFrameRanges)
         {
-            animationStates.Add(frame.frameName);
+            //animationStates.Add(frame.frameName);
 
             if (frame.frameName == IdleFrameName)
             {
@@ -73,7 +80,7 @@ public class AnimationManager : MonoBehaviour
     {
         currentTimePerFrame += Time.deltaTime;
 
-        if(currentTimePerFrame >= timePerFrame)
+        if (currentTimePerFrame >= timePerFrame)
         {
             currentFrame++;
             currentTimePerFrame = 0;
@@ -84,6 +91,27 @@ public class AnimationManager : MonoBehaviour
             }
 
             spriteRenderer.sprite = Frames[currentFrame];
+        }
+    }
+
+    public void RegesterEvent()
+    {
+        if (ChangeAnimEvent == null)
+        {
+            ChangeAnimEvent = new MyStringEvent();
+        }
+        
+        ChangeAnimEvent.AddListener(ChangeAnim);
+    }
+
+    public void ChangeAnim(string t_newAnimName)
+    {
+        foreach (myFrame frame in customFrameRanges)
+        {
+            if (frame.frameName == t_newAnimName)
+            {
+                currentFrameObj = frame;
+            }
         }
     }
 }

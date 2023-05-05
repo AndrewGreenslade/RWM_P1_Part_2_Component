@@ -14,34 +14,61 @@ public class MyStringEvent : UnityEvent<string>
 {
 }
 
-
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(SpriteRenderer)), RequireComponent(typeof(BoxCollider2D))]
 public class AnimationManager : MonoBehaviour
 {
+    [Header("Sprite information")]
+
+    [Tooltip("SpriteSheet that you want to splice up")]
     public Sprite spriteSheet;
     private SpriteRenderer spriteRenderer;
-    public int XFrameCount;
-    public int YFrameCount;
-    public int totalFrames;
-    public Sprite[] Frames;
+    
+    [Header("Required frame information")]
 
-    public List<myFrame> customFrameRanges;
+    [Tooltip("How many frames are there on the Horizontal axis")]
+    public int XFrameCount;
+
+    [Tooltip("How many frames are there on the Vertical axis")]
+    public int YFrameCount;
+
+    [Tooltip("Total frame count")]
+    public int totalFrames;
+
+    private Sprite[] Frames;
+    
+    [Header("Animation variables")]
+
+    [Tooltip("List of animations")]
+    public List<myFrame> Animations;
+    
     public MyStringEvent ChangeAnimEvent;
 
+    [Tooltip("Idle animation to play first of all from the list of animations")]
     public string IdleFrameName = "Idle";
-    public myFrame currentFrameObj;
 
+    [Tooltip("Current animation")]
+    public myFrame currentAnimation;
+
+    [Header("Frame time variables")]
+
+    [Tooltip("How long you want each frame to last in seconds")]
     public float timePerFrame;
-    public float currentTimePerFrame;
-    public int currentFrame;
+    
+    private float currentTimePerFrame;
+    
+    private int currentFrame;
+
+    private BoxCollider2D myCollider;
 
     // Start is called before the first frame update
     void Awake()
     {
+        myCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        
         spriteRenderer.sprite = spriteSheet;
 
-        //animationStates = new List<string>();
         RegesterEvent();
 
         List<Sprite> cut_Sprites = new List<Sprite>();
@@ -61,18 +88,20 @@ public class AnimationManager : MonoBehaviour
 
         Frames = cut_Sprites.ToArray();
 
-        foreach (myFrame frame in customFrameRanges)
+        foreach (myFrame frame in Animations)
         {
-            //animationStates.Add(frame.frameName);
-
             if (frame.frameName == IdleFrameName)
             {
-                currentFrameObj = frame;
+                currentAnimation = frame;
             }
         }
 
-        currentFrame = currentFrameObj.startAndEndFrames.x;
+        currentFrame = currentAnimation.startAndEndFrames.x;
         spriteRenderer.sprite = Frames[currentFrame];
+
+        Vector2 myBounds = spriteRenderer.sprite.bounds.size;
+
+        myCollider.size = new Vector2(myBounds.y / transform.lossyScale.x, myBounds.y / transform.lossyScale.y);
     }
 
     // Update is called once per frame
@@ -85,15 +114,16 @@ public class AnimationManager : MonoBehaviour
             currentFrame++;
             currentTimePerFrame = 0;
 
-            if (currentFrame > currentFrameObj.startAndEndFrames.y)
+            if (currentFrame > currentAnimation.startAndEndFrames.y)
             {
-                currentFrame = currentFrameObj.startAndEndFrames.x;
+                currentFrame = currentAnimation.startAndEndFrames.x;
             }
 
             spriteRenderer.sprite = Frames[currentFrame];
         }
     }
 
+    //public function for Regestering custom event
     public void RegesterEvent()
     {
         if (ChangeAnimEvent == null)
@@ -104,13 +134,14 @@ public class AnimationManager : MonoBehaviour
         ChangeAnimEvent.AddListener(ChangeAnim);
     }
 
+    //public function for Changing animation for custom event above
     public void ChangeAnim(string t_newAnimName)
     {
-        foreach (myFrame frame in customFrameRanges)
+        foreach (myFrame frame in Animations)
         {
             if (frame.frameName == t_newAnimName)
             {
-                currentFrameObj = frame;
+                currentAnimation = frame;
             }
         }
     }

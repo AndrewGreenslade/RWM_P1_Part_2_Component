@@ -16,14 +16,14 @@ public class ExamplePlayerControllerAnims : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            if (manager.currentFrameObj.frameName != "Walk") 
+            if (manager.currentAnimation.frameName != "Walk") 
             { 
                 manager.ChangeAnimEvent.Invoke("Walking");
             }
         }
         else
         {
-            if (manager.currentFrameObj.frameName != "Idle")
+            if (manager.currentAnimation.frameName != "Idle")
             {
                 manager.ChangeAnimEvent.Invoke("Idle");
             }

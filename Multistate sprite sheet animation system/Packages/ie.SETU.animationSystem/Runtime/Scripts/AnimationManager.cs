@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEditor.Progress;
 
 [System.Serializable]
 public struct myFrame
@@ -144,5 +148,39 @@ public class AnimationManager : MonoBehaviour
                 currentAnimation = frame;
             }
         }
+    }
+
+    public void ExportAnims(string gameobjectName) 
+    {
+        AnimationList theAsset = ScriptableObject.CreateInstance<AnimationList>();
+
+        theAsset.Animations.AddRange(this.Animations);
+       
+        string path = AssetDatabase.GetAssetPath(Selection.activeObject);
+
+        if (path == "")
+        {
+            path = "Assets";
+        }
+
+        string assetPathAndName = AssetDatabase.GenerateUniqueAssetPath(path + "/" + gameobjectName + "_AnimationList.asset");
+
+        AssetDatabase.CreateAsset(theAsset, assetPathAndName);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+    }
+
+    public void LoadExportedAnims(string path)
+    {
+        AnimationList t = (AnimationList)AssetDatabase.LoadAssetAtPath(path, typeof(AnimationList));
+
+        Animations.Clear();
+
+        foreach (var item in t.Animations)
+        {
+            Animations.Add(item);
+        }
+
+        Debug.Log("Finished loading animations!!!!");
     }
 }

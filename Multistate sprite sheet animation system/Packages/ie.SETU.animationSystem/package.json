@@ -1,7 +1,7 @@
 {
 	"name": "ie.setu.animationsystem",
-	"version": "0.1.5",
+	"version": "0.1.7",
 	"displayName": "animationSystem",
-	"description": "a animation system",
+	"description": "a spritesheet based animation system",
 	"unity": "2020.3"
 }

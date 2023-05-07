@@ -187,61 +187,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -7106597437329586280, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -7106597437329586280, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: damping
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: -7106597437329586280, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: liftForce
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7106597437329586280, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: jumpHeight
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: -7106597437329586280, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: floatHeight
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4421662896332763280, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
       propertyPath: m_Name
       value: ExampleCharacter
       objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: Animations.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: Animations.Array.data[2].frameName
-      value: Jumping
-      objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: Animations.Array.data[1].startAndEndFrames.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: Animations.Array.data[2].startAndEndFrames.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763281, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: Animations.Array.data[2].startAndEndFrames.y
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4421662896332763295, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763295, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4421662896332763295, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4421662896332763295, guid: 7346a1fef7c438146889c65ecb96ceef, type: 3}
       propertyPath: m_LocalPosition.x
